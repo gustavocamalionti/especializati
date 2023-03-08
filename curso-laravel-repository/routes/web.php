@@ -1,18 +1,25 @@
 <?php
 
-$this->any('admin/products/search', 'Admin\ProductController@search')->name('products.search');
-$this->resource('admin/products', 'Admin\ProductController');
+$this->group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
 
-Route::get('admin', function () {
-})->name('admin');
+    // Reports
+    $this->get('reports/vue', 'ReportsController@vue')->name('reports.vue');
+    $this->get('reports/years', 'ReportsController@year')->name('reports.year');
+    // $this->get('reports/months', 'ReportsController@months')->name('reports.months');
+    $this->get('reports/months', 'ReportsController@months2')->name('reports.months');
 
-Route::any('admin/categories/search', 'Admin\CategoryController@search')->name('categories.search');
-Route::resource('admin/categories', 'Admin\CategoryController');
+    $this->any('users/search', 'UserController@search')->name('users.search');
+    $this->resource('users', 'UserController');
 
-Route::get('/', function () {
-    return view('welcome');
+    $this->any('products/search', 'ProductController@search')->name('products.search');
+    $this->resource('products', 'ProductController');
+
+    $this->any('categories/search', 'CategoryController@search')->name('categories.search');
+    $this->resource('categories', 'CategoryController');
+
+    $this->get('/', 'DashboardController@index')->name('admin');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'SiteController@index');

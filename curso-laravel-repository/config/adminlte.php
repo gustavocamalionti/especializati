@@ -110,13 +110,45 @@ return [
     'menu' => [
         'OPÇÕES',
         [
+            'text' => 'Dashboard',
+            'url'  => 'admin',
+            'icon' => 'tachometer',
+        ],
+        [
             'text' => 'Categorias',
             'url'  => 'admin/categories',
+            'icon' => 'object-group',
         ],
         [
             'text'        => 'Produtos',
             'url'         => 'admin/products',
-            'icon'        => 'file',
+            'icon'        => 'tasks',
+        ],
+        [
+            'text'        => 'Usuários',
+            'url'         => 'admin/users',
+            'icon'        => 'users',
+        ],
+        [
+            'text'        => 'Relatórios',
+            'icon'        => 'area-chart',
+            'submenu' => [
+                [
+                    'text'        => 'Meses',
+                    'url'         => 'admin/reports/months',
+                    'icon'        => 'line-chart',
+                ],
+                [
+                    'text'        => 'Anual',
+                    'url'         => 'admin/reports/years',
+                    'icon'        => 'pie-chart',
+                ],
+                [
+                    'text'        => 'Vue.js',
+                    'url'         => 'admin/reports/vue',
+                    'icon'        => 'bar-chart',
+                ],
+            ]
         ],
     ],
 
@@ -154,6 +186,6 @@ return [
     'plugins' => [
         // 'datatables' => true,
         // 'select2'    => true,
-        // 'chartjs'    => true,
+        'chartjs'    => true,
     ],
 ];
