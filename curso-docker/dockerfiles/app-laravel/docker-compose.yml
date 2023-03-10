@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  app: 
+  app:
     build:
       args:
         user: gustavo
@@ -10,12 +10,12 @@ services:
       dockerfile: Dockerfile
     image: gustavocamalionti/laravel-app
     working_dir: /var/www/
-    volumes: 
+    volumes:
       - ./:/var/www/
     restart: unless-stooped
     networks:
       - docker-laravel
 
 networks:
-  -docker-laravel:
+  docker-laravel:
     driver: bridge
