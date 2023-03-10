@@ -13,7 +13,7 @@ services:
       - example-network
 
   php:
-    image: php:7.4-fpm
+    image: php:8.0-fpm
     volumes:
       - ./:/var/www
     networks:
