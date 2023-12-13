@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <title>Curso de Vue 3</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <div :style="styles">
+            <label for="themeGreen">
+                <input type="checkbox" name="themeGreen" id="themeGreen" :checked="themeGreen" @click="toggleTheme()">
+                Tema Claro
+            </label>
+            <h1>Curso de {{ nameCourse }}</h1>
+            <p>Professor: {{ nameTeacher + ' ' + lastNameTeacher }}</p>
+            <p>Professor: {{ fullName }}</p>
+            <hr>
+            <h3>Carrinho ({{ cart.length }})</h3>
+            <ul>
+                <li v-for="(product, index) in products" :key="index">
+                    <!-- O nome da propriedade precisa ser igual a props do componente, depois o que irá ser passado -->
+                    <!-- No caso, o objeto product-->
+                    <product-detail :product="product" :product-in-cart="inCart(product)">
+                    </product-detail>
+
+                </li>
+            </ul>
+
+            <!-- <product-detail></product-detail> -->
+
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script src="./assets/js/app.js"></script>
+
+    <!-- Components -->
+    <script src="./components/ProductsDetail.js"></script>
+    <script>
+        app.mount('#app');
+    </script>
+</body>
+
+</html>
